@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Main from './main/Main';
+import List from './admin/List';
+import ListCreate from './admin/ListCreate';
+import ListEdit from './admin/ListEdit';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+
+          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 className="h2">Dashboard</h1>       
+          </div>
+        
+          <div className="table-responsive">
+           <BrowserRouter>
+              <Route path="/" exact component={Main} />
+              <Route path="/admin/products" exact component={List} />  
+              <Route path="/admin/products/create" exact component={ListCreate} />   
+              <Route path="/admin/products/:id/edit" exact component={ListEdit} />                   
+           </BrowserRouter>
+
+          </div>
+
+    
+    
     </div>
   );
 }
